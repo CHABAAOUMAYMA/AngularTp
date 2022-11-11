@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MouvementDirective } from './directives/mouvement.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MouvementDirective
   ],
   imports: [
     BrowserModule,

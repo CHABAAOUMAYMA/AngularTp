@@ -353,6 +353,174 @@
   <!-- Resources -->
   <h2>Resources</h2>
   <p>Here are some links to help you get started:</p>
+  <ul>
+    <li> Nom : {{etd._nom}}</li>
+    <li> Prenom : {{etd._prenom}}</li>
+    <li>{{etd}}</li>
+    <li>{{etd | json}}</li>
+  </ul>
+
+  <ul>
+    <li> {{tab[0]}}</li>
+    <li> {{tab[1]}}</li>
+    <li> {{tab[2]}}</li>
+    <li> {{tab[3]}}</li>
+  </ul>
+
+  <p>{{ direBonjour() }}</p>
+  <p [textContent] = titlee ></p>
+
+  <ul>
+    <li *ngFor="let element of tab">
+      {{ element }}
+    </li>
+  </ul>
+
+  <ul>
+    <li *ngFor="let element of tab ; let i = index ">
+      {{ i }} : {{ element }}
+    </li>
+  </ul>
+
+  <ul>
+    <li *ngFor="let elt of tab; let i = index; let test =  even">
+      {{ i }} : {{ elt }} : {{ test }}
+    </li>
+  </ul>
+
+  <ul>
+    <li *ngIf="tab[0] % 2 != 0 ; else  sinon">
+      {{ tab[0] }} est impair
+    </li>
+    <ng-template #sinon>
+      <li>
+        {{ tab[0] }} est pair
+      </li>
+    </ng-template>
+  </ul>
+
+  <ul>
+    <li *ngIf="tab[2] % 2 != 0; then si else sinon">
+      Ce code ne sera jamais pris en compte
+    </li>
+    <ng-template #si>
+      <li>
+        {{ tab[2] }} est impair
+      </li>
+    </ng-template>
+    <ng-template #sinon>
+      <li>
+        {{ tab[2] }} est pair
+      </li>
+    </ng-template>
+  </ul>
+
+  <h1>parite Etudiants</h1>
+
+  <ul>
+    <ng-container *ngFor="let elt of tab , let i = index">
+      <li *ngIf="tab[i] % 2 != 0; else sinon">
+        {{i}} : {{ tab[i] }} est impair
+      </li>
+      <ng-template #sinon>
+        <li>
+          {{i}} : {{ tab[i] }} est pair
+        </li>
+      </ng-template>
+    </ng-container>
+  </ul>
+
+  <h1>Notes Etudiants</h1>
+
+  <ul>
+    <ng-container *ngFor="let elt of tabb , let i = index">
+      <li *ngIf="tabb[i] >= 0 && tabb[i]<=9; else sinon">
+        echec : {{ tabb[i] }}
+      </li>
+      <ng-template #sinon>
+        <li *ngIf="tabb[i] >= 10 && tabb[i]<= 13; else sinon1">
+            moyen : {{ tabb[i] }}
+        </li>
+      </ng-template>
+      <ng-template #sinon1>
+        <li *ngIf="tabb[i] >= 14 && tabb[i]<= 16; else sinon2">
+          bien : {{ tabb[i] }}
+        </li>
+      </ng-template>
+      <ng-template #sinon2>
+        <li>
+          tres bien : {{ tabb[i] }}
+        </li>
+      </ng-template>
+    </ng-container>
+  </ul>
+
+  <h1>Switch</h1>
+  <ul>
+    <ng-container *ngFor="let elt of tab">
+      <ng-container [ngSwitch]="elt">
+        <li *ngSwitchCase="1">
+          {{ elt }} = un
+        </li>
+        <li *ngSwitchCase="2">
+          {{ elt }} = deux
+        </li>
+        <li *ngSwitchCase="3">
+          {{ elt }} = trois
+        </li>
+        <li *ngSwitchDefault>
+          {{ elt }} : autre
+        </li>
+      </ng-container>
+    </ng-container>
+  </ul>
+
+  <h2>notes</h2>
+  <ul>
+    <ng-container *ngFor="let elt of tabb">
+      <ng-container [ngSwitch]="true">
+        <li *ngSwitchCase="elt >= 0 && elt < 10">
+          {{ elt }} : échec
+        </li>
+        <li *ngSwitchCase="elt >= 10 && elt < 13">
+          {{ elt }} : moyen
+        </li>
+        <li *ngSwitchCase="elt >= 13 && elt < 15">
+          {{ elt }} : bien
+        </li>
+        <li *ngSwitchCase="elt >= 15">
+          {{ elt }} : tres bien
+        </li>
+        <li *ngSwitchDefault>  autre
+        </li>
+      </ng-container>
+    </ng-container>
+  </ul>
+  <h1>Colors</h1>
+  <p [textContent]= title [ngStyle]= "{backgroundColor:'red' }"></p>
+
+  <p [ngStyle]="{color: getColor(), backgroundColor:  getBackgroundColor()}">
+    {{ title }}
+  </p>
+
+  <p [ngClass]="{'bleu': true}">
+    {{ title }}
+  </p>
+
+  <p [ngClass]="{'rouge': title == 'Oumayma chabaa', 'bleu': title != 'Oumayma chabaa'}">
+    {{ title }}
+  </p>
+
+  <ul>
+    <ng-container *ngFor="let elt of tabb">
+      <li [ngClass]="{'rouge': elt % 2 != 0, 'bleu':  elt % 2 == 0}">
+      {{ elt }}
+      </li>
+    </ng-container>
+  </ul>
+
+  <p appMouvement > directive </p>
+
 
   <div class="card-container">
     <a class="card" target="_blank" rel="noopener" href="https://angular.io/tutorial">
