@@ -5,11 +5,12 @@ import { AdresseComponent } from './composants/adresse/adresse.component';
 
 const routes: Routes = [
   { path: 'stagiaire', component: StagiaireComponent },
+  { path: 'stagiaire/:nom/:prenom', component: StagiaireComponent},
   { path: 'adresse', component: AdresseComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

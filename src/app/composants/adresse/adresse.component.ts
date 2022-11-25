@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-adresse',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdresseComponent implements OnInit {
 
-  constructor() { }
+  rue: string | null = '';
+  codePostal: string | null = '';
+  ville: string | null = '';
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.ville = this.route.snapshot.queryParams['ville'];
+    this.rue = this.route.snapshot.queryParams['rue'];
+    this.codePostal = this.route.snapshot.queryParams['codepostal'];
   }
+
+
 
 }

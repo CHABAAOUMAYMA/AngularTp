@@ -7,7 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  lienStagiaire = '';
+  param1 = 'john';
+  param2 = 'wick';
+
+  constructor() {
+    this.lienStagiaire = '/stagiaire/'
+    + this.param1 + '/'
+    + this.param2;
+
+  }
 
   ngOnInit(): void {
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-stagiaire',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stagiaire.component.css']
 })
 export class StagiaireComponent implements OnInit {
+  nom: any;
+  prenom: any;
+  constructor(private route: ActivatedRoute) { }
 
-  constructor() { }
+/*  ngOnInit(){
+    this.route.paramMap.subscribe(res => {
+      this.nom = res.get('nom');
+      this.prenom = res.get('prenom');
+      console.log(this.nom + ' ' + this.prenom);
+    });
+  }*/
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.nom = this.route.snapshot.params['nom'];
+    this.prenom = this.route.snapshot.params['prenom'];
+    console.log(this.nom + ' ' + this.prenom);
   }
 
 }
